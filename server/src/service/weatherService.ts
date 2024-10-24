@@ -28,7 +28,7 @@ class WeatherService {
   private apiKey = process.env.WEATHER_API_KEY;
   private cityName: string = '';
 
-  private async fetchLocationData(query: string): Promise<any> {
+  private async fetchLocationData(_query: string): Promise<any> {
     const response = await axios.get(`${this.buildGeocodeQuery()}`);
     return response.data[0];
   }

@@ -13,14 +13,18 @@
     "client:build": "cd client && npm run build",
     "client:dev": "cd client && npm run dev",
     "build": "cd client && npm run build",
-    "render-build": "npm install && npm run build"
+    "render-build": "npm install && npm run build",
+    "dev": "nodemon server/src/server.ts --exec ts-node"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^22.7.9",
     "concurrently": "^8.2.2",
-    "nodemon": "^3.1.0",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3",
     "wait-on": "^7.2.0"
   },
   "dependencies": {

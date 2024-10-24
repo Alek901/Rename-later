@@ -14,6 +14,9 @@ class city {
 }
 // TODO: Complete the HistoryService class
 class HistoryService {
+  getCities() {
+    throw new Error('Method not implemented.');
+  }
   private filePath = path.join(process.cwd(), 'data', 'searchHistory.json');
 
   private async read(): Promise<city[]> {
