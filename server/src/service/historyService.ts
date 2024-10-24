@@ -24,7 +24,30 @@ class HistoryService {
       return [];
     }
   }
+  private async write(cities: city[]): Promise<void> {
+    await fs.writeFile(this.filePath, JSON.stringify(cities, null, 2));
   }
+
+  async addCity(cityName: string): Promise<city> {
+    const cities = await this.read();
+    const newCity =  new city(cityName);
+    cities.push(newCity);
+    await this.write(cities);
+    return newCity;
+  }
+
+  async removeCity(id: string): Promise<boolean> {
+    const cities = await this.read();
+    const filteredCities = cities.filter(city => city.id !== id);
+    if (filteredCities.length === cities.length) {
+      return false;
+    }
+    await this.write(filteredCities);
+    return true;
+  }
+  }
+
+  export default new HistoryService();
   // TODO: Define a read method that reads from the searchHistory.json file
   // private async read() {}
   // TODO: Define a write method that writes the updated cities array to the searchHistory.json file
@@ -35,6 +58,6 @@ class HistoryService {
   // async addCity(city: string) {}
   // * BONUS TODO: Define a removeCity method that removes a city from the searchHistory.json file
   // async removeCity(id: string) {}
-}
 
-export default new HistoryService();
+
+
