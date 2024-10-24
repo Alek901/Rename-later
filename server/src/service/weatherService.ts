@@ -1,5 +1,27 @@
 import dotenv from 'dotenv';
+import axios from 'axios';
 dotenv.config();
+
+interface Coordinates {
+  lat: number;
+  lon: number;
+}
+
+class weather {
+  temperature: number;
+  description: string;
+  humidity: number;
+  windSpeed: number;
+  icon: number;
+
+  constructor(data: any) {
+    this.temperature = data.temp || data.main.temp;
+    this.description = data.description || data.weather[0].description;
+    this.humidity = data.humidity || data.main.humidity;
+    this.windSpeed = data.windSpeed || data.wind.speed;
+    this.icon = data.icon || data.weather[0].icon;
+  }
+}
 
 // TODO: Define an interface for the Coordinates object
 
